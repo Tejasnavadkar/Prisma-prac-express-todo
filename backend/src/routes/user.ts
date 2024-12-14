@@ -49,7 +49,8 @@ if(cretedUser){
    const bearertoken = jwt.sign({email:cretedUser.email,name:cretedUser.firstName},JWT_Secret)
    res.status(200).json({
     msg:"user Created Successfully",
-    token:bearertoken
+    token:bearertoken,
+    user:cretedUser
    })
     
 }

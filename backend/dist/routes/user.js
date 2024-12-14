@@ -56,7 +56,8 @@ router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function*
         const bearertoken = jsonwebtoken_1.default.sign({ email: cretedUser.email, name: cretedUser.firstName }, exports.JWT_Secret);
         res.status(200).json({
             msg: "user Created Successfully",
-            token: bearertoken
+            token: bearertoken,
+            user: cretedUser
         });
     }
 }));

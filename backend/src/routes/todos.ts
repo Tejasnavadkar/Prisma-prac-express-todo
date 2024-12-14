@@ -41,11 +41,31 @@ if(!parsed.success){
 
 router.get("/getTodos",Authmiddleware,async (req,res)=>{
     // get all todos of user in db
-    const user_id = req.body.user_id
+    const user_id =parseInt(req.query.user_id)
+    console.log("user_Id------"user_id)
+    
+   
+    if (!user_id) {
+     res.status(400).json({ msg: "user_id is required" });
+     return
+    }
+    // const userId =parseInt(user_id)
 
+    if (typeof user_id !== 'number') {
+         res.status(400).json({ msg: "user_id must be a number" });
+         return
+    }
+
+    // Convert to a number (if necessary) or leave as string
+    // const userIdNumber = parseInt(user_id, 10);
+
+    // if (isNaN(userIdNumber)) {
+    //     return res.status(400).json({ msg: "Invalid user_id" });
+    // }
+    
    const allTodos = await Prisma.todo.findMany({
         where:{
-            user_id
+            user_id:user_id
         }
     })
 
