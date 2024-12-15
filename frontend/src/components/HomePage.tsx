@@ -49,6 +49,10 @@ const createTodo = async ()=>{
          authorization:"Bearer " + localStorage.getItem('token')
      }
     })
+
+    FetchTodos()
+    setTitle("")
+    setDescription("")
  
     }
 
